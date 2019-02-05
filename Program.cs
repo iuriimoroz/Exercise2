@@ -36,6 +36,7 @@ namespace ZipArchiveApp
                 directorySizeWithUnzippedFiles = info.EnumerateFiles().Sum(file => file.Length);
 
                 unzippedFilesSize = directorySizeWithUnzippedFiles - initialDirectorySize;
+                // Compession ratio calculation based on https://en.wikipedia.org/wiki/Data_compression_ratio (see " space savings" equation)
                 ratioInPercents = (1 - zipFileSize / unzippedFilesSize) * 100;
 
                 Console.WriteLine($"Compression ratio of your archive was {ratioInPercents} %");
